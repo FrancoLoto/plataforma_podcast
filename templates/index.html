@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}El rincón del Podcast{% endblock title %}
+
+{% block content %}
+<span class="text-5xl font-bold text-center mt-5 mb-10">
+    Bienvenio a El rincón del Podcast
+</span>
+
+<div class="container mx-auto mt-8">
+    <div class="text-3xl font-bold mb-4">
+        Últimos Podcasts
+    </div>
+    <div class="grid grid-cols-1 md:gird-cols-2 lg:grid-cols-3 gap-6">
+        {% for podcast in podcasts %}
+            <a href="{% url 'podcast_detail' podcast.slug %}" class="bg-green-100 rounded-xl shadow-lg p-6 flex flex-col justify-between">
+                <div>
+                    <img src="{{ podcast.thumbnail.url }}" alt="Podcast thumbnail" class="w-full h-40 object-cover rounded-xl mb-4"/>
+                    <h3 class="text-lg font-bold mb-2">{{ podcast.title }}</h3>
+                    <p class="text-green-900 font-semibold mb-2">Creado por {{ podcast.author }}</p>
+                    <p class="mb-4">{{ podcast.description|truncatewords:20 }}</p>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

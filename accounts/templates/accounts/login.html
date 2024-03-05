@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Ingresar | El rincón del Podcast{% endblock title %}
+
+{% block content %}
+<div class="flex justify-center items-center h-screen">
+    <div class="max-w-md bg-green-700 p-6 rounded-xl shadow-lg">
+        <h2 class="text-2xl font-bold text-white mb-4 text-center">Iniciar Sesión</h2>
+
+        <form method="POST" action="{% url 'ingresar' %}">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="username" class="text-white">Usuario</label>
+                <input type="text" id="username" name="username" class="w-full mt-1 bg-gray-200 rounded-lg px-3 py-2" placeholder="Ingrese su nombre de usuario"/>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="text-white">Contraseña</label>
+                <input type="password" id="password" name="password" class="w-full mt-1 bg-gray-200 rounded-lg px-3 py-2" placeholder="Ingrese su contraseña"/>
+            </div>
+            <div class="flex justify-center">
+                <button type="submit" class="bg-white text-green-500 px-4 py-2 rounded-xl font-semibold hover:bg-green-100 transition duration-300">Ingresar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

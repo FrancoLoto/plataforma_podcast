@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ podcast.title }} | El rincón del Podcast{% endblock title %}
+
+{% block content %}
+<div class="flex justify-center items-center h-screen">
+    <div class="bg-green-100 p-8 rounded-lg shadow-md">
+        <div class="text-center mb-4">
+            <div class="w-80 h-60 mx-auto overflow-hidden rounded-lg">
+                <img src="{{ podcast.thumbnail.url }} " alt="Podcast thumbnail" class="object-cover w-full h-full"/>
+            </div>
+            <h2 class="text-2xl font-bold mb-2 mt-2">{{ podcast.title }}</h2>
+            <p><i>Creado por </i><i class="text-green-900 font-semibold">{{ podcast.author }}</i></p>
+        </div>
+        <audio controls class="w-full mb-4">
+            <source src="{{ podcast.file.url }}" type="audio/mpeg">
+            Su navegador no soporta elementos con audio.
+        </audio>
+        <p class="mb-4">{{ podcast.description }}</p>
+    </div>
+</div>
+{% endblock content %}
